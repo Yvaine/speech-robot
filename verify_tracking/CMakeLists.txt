@@ -135,7 +135,7 @@ link_directories(/home/ubuntu/st-work/st_face/target/linux-armv7/release/src/cvf
 
 ## Declare a C++ executable
 #add_executable(verify_tracking_node src/verify_tracking_node.cpp src/arduino_cmd.cpp)
- add_executable(verify_tracking_node src/verify_tracking_node1.6.cpp)
+ add_executable(verify_tracking_node src/verify_tracking_node1.7.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above

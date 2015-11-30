@@ -35,7 +35,7 @@ const int bits_per_sample = 16;
 const unsigned int speaktime = 60 * 1000000;
 const int frames_per_period = 3200;
 const int port = 9001;
-char server_ip[20] = "10.0.1.77";
+char server_ip[20] = "10.0.1.15";
 
 char motor_cmd = 'q';
 std_msgs::Char motor; 

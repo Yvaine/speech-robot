@@ -10,7 +10,7 @@
  * Fixed problem of break of loop. 2015.11.23
  * Fixed can not find the face.  2015.11.24
  * Add host verify. 2015.11.26
- * Add ignore of image  verfigy. 2015.11.30
+ * Add ignore of image  verfiy. 2015.11.30
  */
 #include<iostream>
 //#include "time_helper.h"
@@ -26,6 +26,9 @@
 
 //#define TIME
 #define COST_TIME(tstart, tend)  (1000000 * (tend.tv_sec - tstart.tv_sec) + tend.tv_usec- tstart.tv_usec )
+#define COST_TIME_MSECOND(tstart, tend)  ((1000000 * (tend.tv_sec - tstart.tv_sec) + tend.tv_usec- tstart.tv_usec ) / 1000)
+
+#define COST_TIME_MILLS(tstart, tend)  (tend.tv_sec - tstart.tv_sec)
 using namespace std;
 using namespace cv;
 using namespace ros;
@@ -309,7 +312,7 @@ int main(int argc, char *argv[]) {
 				CV_FACE_UP, &p_face_2, &face_count_2);
 #ifdef TIME
 			gettimeofday(&end3, NULL);
-			time = COST_TIME(start3, end3);
+			 time = COST_TIME(start3, end3);
 			printf("face detect from camera time cost = %.2fs \n", time / 1000000);
 #endif
 		if (cv_result != CV_OK) {
@@ -479,6 +482,12 @@ int face_track(VideoCapture &capture, Point &expect, int frame_width,  int frame
 	int face_count = 0;
 	cv_result_t cv_result = CV_OK;
 	Mat temp_frame, color_frame;
+	struct timeval time_cur;
+	//time_last = time_cur;
+	volatile double time_noface = 0.0;
+	//static struct timeval time_last = time_cur;
+	struct timeval time_last = time_cur;
+	
     while(capture.read(temp_frame))
 	{
 		resize(temp_frame, temp_frame, Size(frame_width, frame_height), 0, 0,
@@ -493,6 +502,11 @@ int face_track(VideoCapture &capture, Point &expect, int frame_width,  int frame
 			goto RETURN;
 		}
 		if(p_face){
+			gettimeofday(&time_cur, NULL);
+			time_noface = 0.0;
+			time_last = time_cur;
+			//printf("time_last is %lf, time_cur is %lf\n", (double)time_last.tv_sec, (double)time_cur.tv_sec);
+
 			int face_width = p_face[0].rect.right - p_face[0].rect.left;
 			int face_height = p_face[0].rect.bottom - p_face[0].rect.top;
 			int face_width_half = face_width >> 1;
@@ -515,9 +529,18 @@ int face_track(VideoCapture &capture, Point &expect, int frame_width,  int frame
 		cv_face_release_tracker_result(p_face, face_count);
 		}
 		else{
-			capStatus = NOFACE;
-			motor.data = 'q';
-			return -1;
+			gettimeofday(&time_cur, NULL);
+			//printf("time_noface1 is %lfms\n", time_noface);
+			//printf("time_last is %lf, time_cur is %lf\n", (double)time_last.tv_sec, (double)time_cur.tv_sec);
+			time_noface += COST_TIME_MSECOND(time_last, time_cur); // get s
+			time_last = time_cur;
+			printf("wait no face time ... %lfms\n", time_noface);
+			if( time_noface > 10 * 1000)
+			{
+				capStatus = NOFACE;
+				motor.data = 'q';
+				return -1;
+			}
 		}
 		//motor_pub.publish(motor);
 	}
