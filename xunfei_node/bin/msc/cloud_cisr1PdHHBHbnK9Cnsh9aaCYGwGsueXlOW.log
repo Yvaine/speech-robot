@@ -1,0 +1,317 @@
+============================================================
+Time  2015/11/17 11:22:51 359 
+============================================================
+[2015/11/17 11:22:51 361] isr_1conn  2218 SYS_MSG_LOAD_CLOUD  
+[2015/11/17 11:22:51 361] isr_1conn  2239 SYS_MSG_REGCB_CLOUD param0 =   msp_status_cb  param1 =  func(29b5760) 
+[2015/11/17 11:22:51 361] isr_1conn  2239 SYS_MSG_REGCB_CLOUD param0 =   cloud_rslt_cb  param1 =  func(29b4d50) 
+[2015/11/17 11:22:51 361] isr_1conn  2239 SYS_MSG_REGCB_CLOUD param0 =   cloud_err_cb  param1 =  func(29b5840) 
+[2015/11/17 11:22:51 362] isr_1conn  2239 SYS_MSG_REGCB_CLOUD param0 =   cloud_status_cb  param1 =  func(29b5920) 
+[2015/11/17 11:22:51 362] isr_1conn  1417 onesoc  
+[2015/11/17 11:22:51 362] isr_1conn  1418 ASR_CLOUD_MSG_SSB  
+[2015/11/17 11:22:51 365] isr_1conn  1433 isr_1conn  cloud_cisr1PdHHBHbnK9Cnsh9aaCYGwGsueXlOW  268436457  1442971303  
+[2015/11/17 11:22:51 365] isr_1conn  1621 nil  
+[2015/11/17 11:22:51 365] isr_1conn  1691 speex-wb  
+[2015/11/17 11:22:51 365] isr_1conn  1769 net_once_bytes  nil  
+[2015/11/17 11:22:51 365] isr_1conn  1774 need_encode  true  
+[2015/11/17 11:22:51 365] isr_1conn  1776 once bytes  122  
+[2015/11/17 11:22:51 371] isr_1conn  1800 User set url is   nil  
+[2015/11/17 11:22:51 371] config     78   select default  
+[2015/11/17 11:22:51 371] config     93   use general cloud  
+[2015/11/17 11:22:51 371] transport  603  paramkvsport is   nil  
+[2015/11/17 11:22:51 371] transport  611  ns_enable=  0  
+[2015/11/17 11:22:51 372] transport  655  url.full=  nil  
+[2015/11/17 11:22:51 372] transport  838  net type:  standard  
+[2015/11/17 11:22:51 372] transport  839  net operator:  def  
+[2015/11/17 11:22:51 372] transport  840  use proxy:  false  
+[2015/11/17 11:22:51 372] transport  1071 ns_enable =  0  
+[2015/11/17 11:22:51 381] transport  155  [dns] [0] response 117.121.21.146  
+[2015/11/17 11:22:51 381] transport  163  117  121  21  146  
+[2015/11/17 11:22:51 381] transport  199  ip front is  117.121.21  
+[2015/11/17 11:22:51 381] transport  265  expected ip  
+[2015/11/17 11:22:51 381] network    89   iptoenv ,  ipcache  dev.voicecloud.cn  def  117.121.21.146  
+[2015/11/17 11:22:51 384] transport  1138 [soc] connect   117.121.21.146  80  
+[2015/11/17 11:22:51 384] transport  1155 mspsoc.open,prot_type=  tcp  
+[2015/11/17 11:22:51 391] transport  461  [soc] [0] connected  
+[2015/11/17 11:22:51 391] isr_1conn  389  transport connect ok  
+[2015/11/17 11:22:51 391] isr_1conn  1127 send ssb request  
+[2015/11/17 11:22:51 391] isr_1conn  821  using loginid  
+[2015/11/17 11:22:51 392] isr_1conn  852  lver:  nil  
+[2015/11/17 11:22:51 392] isr_1conn  857  cfg_ver:  nil  
+[2015/11/17 11:22:51 392] transport  1191 build http request.  
+[2015/11/17 11:22:51 392] transport  1291 POST /msp.do HTTP/1.1
+Host: dev.voicecloud.cn
+Content-Type: multipart/mixed;boundary=--
+Content-Length: 491
+User-Agent: iFLYCloud
+Cache-Control: no-cache
+Accept: */*
+
+----
+CL:221
+CT:text/plain
+
+ver=MSSP+0%2E9&sub=iat&cmd=ssb&ssm=1&auf=audio%2FL16%3Brate%3D16000&cver=5%2E0%2E16%2E1109&net%5Ftype=standard&csid=cisr1PdHHBHbnK9Cnsh9aaCYGwGsueXlOW&key=0ekT/KgQg8uenXuFeURIwPejnKPqG6/^fxfX4cwA4olp5zTMirmS8ZG31^HMAOKJae
+----
+CL:176
+CT:text/params
+CE:gzip,encrypt/0.2
+
+‘>•æ,≈Í_jÁTt +á	∂Ñ{ÂÔ u1J’ºO‘`b}˜ ]R©∑(U{æìpµ”“è¯G\°  Ÿ”≤~å  
+[2015/11/17 11:22:51 397] transport  483  [soc] [0] send ok  666  
+[2015/11/17 11:22:51 417] transport  495  [soc] [0] readable  
+[2015/11/17 11:22:51 417] transport  1563 HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 174
+X-Req-Date: 2015/11/17 11:22:52 286
+Cache-Control: no-cache
+CL: 174
+X-Res-Date: 2015/11/17 11:22:52 302
+
+ver=MSSP+0%2E9&ret=0&cver=5%2E0%2E16%2E1109&uid=d3279533481&key=0fnSRmVcx334Bb9bwsz/zIPQmi7iFLsG9YGCeJSmcvRDo^HBywnTxKrUifQcoKI2LnUEcj9wJ7j8FrJsWfAnwjExmhs5T9hkChaybFnwJ8IxM=  
+[2015/11/17 11:22:51 418] transport  1310 a_complete_httpmessage  200  
+[2015/11/17 11:22:51 418] transport  1419 is_update  true  
+[2015/11/17 11:22:51 418] isr_1conn  421  [trans] [isr_1conncisr1PdHHBHbnK9Cnsh9aaCYGwGsueXlOW] readable  
+[2015/11/17 11:22:51 418] isr_1conn  457  response  
+[2015/11/17 11:22:51 418] isr_1conn  519  resp_syncid =  0  
+[2015/11/17 11:22:51 418] ntp        10   ntp_process enter  
+[2015/11/17 11:22:51 418] ntp        53   ntp delay_rtt=  11  , offset =   0.8885  
+[2015/11/17 11:22:52 308] isr_1conn  568  sid =   iat6099517f@ch01b209a5e98c477100  
+[2015/11/17 11:22:52 310] isr_1conn  574  not QUL_SUPPORT  
+[2015/11/17 11:22:52 310] isr_1conn  581  time cost by session begin command:  31  .  
+[2015/11/17 11:22:52 311] isr_1conn  595  0  2  2  0  
+[2015/11/17 11:23:45 266] isr_1conn  1827 ASR_CLOUD_MSG_AUW  6400  1  
+[2015/11/17 11:23:45 268] isr_1conn  1844     
+[2015/11/17 11:23:45 292] isr_1conn  1210 [session] send 1th audio  
+[2015/11/17 11:23:45 292] isr_1conn  1212 totalsz =   610  
+[2015/11/17 11:23:45 292] isr_1conn  1215 start netperf_fs_timer  
+[2015/11/17 11:23:45 292] transport  1191 build http request.  
+[2015/11/17 11:23:45 292] transport  1291 POST /msp.do HTTP/1.1
+Host: dev.voicecloud.cn
+Content-Type: multipart/mixed;boundary=--
+Content-Length: 897
+User-Agent: iFLYCloud
+Cache-Control: no-cache
+Accept: */*
+
+----
+CL:174
+CT:text/plain
+
+ver=MSSP+0%2E9&sub=iat&cmd=auw&aus=1&cver=5%2E0%2E16%2E1109&key=0fnSRmVcx334Bb9bwsz/zIPQmi7iFLsG9YGCeJSmcvRDo^HBywnTxKrUifQcoKI2LnUEcj9wJ7j8FrJsWfAnwjE8irsDHtuaHnaybFnwJ8IxM=
+----
+CL:616
+CT:audio/L16;rate=16000
+CE:speex-wb,encrypt/0.2
+
+‰∫n<VÏÅÅÅÅÅÅÅ˝‰ù$úõÓ§àˆm  
+[2015/11/17 11:23:45 297] transport  483  [soc] [0] send ok  1072  
+[2015/11/17 11:23:45 533] transport  495  [soc] [0] readable  
+[2015/11/17 11:23:45 534] transport  1563 HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 162
+X-Req-Date: 2015/11/17 11:23:45 296
+Cache-Control: no-cache
+CL: 162
+X-Res-Date: 2015/11/17 11:23:45 300
+
+ver=MSSP+0%2E9&ret=10108&cver=5%2E0%2E16%2E1109&key=0fnSRmVcx334Bb9bwsz/zIPQmi7iFLsG9YGCeJSmcvRDo^HBywnTxKrUifQcoKI2LnUEcj9wJ7j8FrJsWfAnwjExmhs5T9hkChaybFnwJ8IxM=  
+[2015/11/17 11:23:45 540] transport  1310 a_complete_httpmessage  200  
+[2015/11/17 11:23:45 540] transport  1419 is_update  true  
+[2015/11/17 11:23:45 540] isr_1conn  421  [trans] [isr_1conncisr1PdHHBHbnK9Cnsh9aaCYGwGsueXlOW] readable  
+[2015/11/17 11:23:45 540] isr_1conn  425  size =   610  
+[2015/11/17 11:23:45 540] isr_1conn  460  MSS:bad response:10108  
+[2015/11/17 11:23:46 096] isr_1conn  329  send_ok_num, timer_num, send_average =   610  2  305  
+[2015/11/17 11:23:46 096] isr_1conn  332  netperf =   30  
+[2015/11/17 11:23:46 096] isr_1conn  333  start netperf_other_timer  
+[2015/11/17 11:23:46 506] isr_1conn  311  send_ok_num, timer_num, send_average =   610  3  203  
+[2015/11/17 11:23:46 506] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:46 906] isr_1conn  311  send_ok_num, timer_num, send_average =   610  4  152  
+[2015/11/17 11:23:46 906] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:47 316] isr_1conn  311  send_ok_num, timer_num, send_average =   610  5  122  
+[2015/11/17 11:23:47 317] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:47 717] isr_1conn  311  send_ok_num, timer_num, send_average =   610  6  101  
+[2015/11/17 11:23:47 717] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:48 128] isr_1conn  311  send_ok_num, timer_num, send_average =   610  7  87  
+[2015/11/17 11:23:48 128] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:48 529] isr_1conn  311  send_ok_num, timer_num, send_average =   610  8  76  
+[2015/11/17 11:23:48 530] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:48 940] isr_1conn  311  send_ok_num, timer_num, send_average =   610  9  67  
+[2015/11/17 11:23:48 940] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:49 342] isr_1conn  311  send_ok_num, timer_num, send_average =   610  10  61  
+[2015/11/17 11:23:49 342] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:49 752] isr_1conn  311  send_ok_num, timer_num, send_average =   610  11  55  
+[2015/11/17 11:23:49 752] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:50 153] isr_1conn  311  send_ok_num, timer_num, send_average =   610  12  50  
+[2015/11/17 11:23:50 153] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:50 564] isr_1conn  311  send_ok_num, timer_num, send_average =   610  13  46  
+[2015/11/17 11:23:50 564] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:50 964] isr_1conn  311  send_ok_num, timer_num, send_average =   610  14  43  
+[2015/11/17 11:23:50 964] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:51 374] isr_1conn  311  send_ok_num, timer_num, send_average =   610  15  40  
+[2015/11/17 11:23:51 374] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:51 775] isr_1conn  311  send_ok_num, timer_num, send_average =   610  16  38  
+[2015/11/17 11:23:51 775] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:52 186] isr_1conn  311  send_ok_num, timer_num, send_average =   610  17  35  
+[2015/11/17 11:23:52 186] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:52 586] isr_1conn  311  send_ok_num, timer_num, send_average =   610  18  33  
+[2015/11/17 11:23:52 586] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:52 996] isr_1conn  311  send_ok_num, timer_num, send_average =   610  19  32  
+[2015/11/17 11:23:52 996] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:53 396] isr_1conn  311  send_ok_num, timer_num, send_average =   610  20  30  
+[2015/11/17 11:23:53 396] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:53 807] isr_1conn  311  send_ok_num, timer_num, send_average =   610  21  29  
+[2015/11/17 11:23:53 808] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:54 208] isr_1conn  311  send_ok_num, timer_num, send_average =   610  22  27  
+[2015/11/17 11:23:54 211] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:54 621] isr_1conn  311  send_ok_num, timer_num, send_average =   610  23  26  
+[2015/11/17 11:23:54 621] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:55 022] isr_1conn  311  send_ok_num, timer_num, send_average =   610  24  25  
+[2015/11/17 11:23:55 022] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:55 423] isr_1conn  311  send_ok_num, timer_num, send_average =   610  25  24  
+[2015/11/17 11:23:55 423] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:55 834] isr_1conn  311  send_ok_num, timer_num, send_average =   610  26  23  
+[2015/11/17 11:23:55 834] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:56 236] isr_1conn  311  send_ok_num, timer_num, send_average =   610  27  22  
+[2015/11/17 11:23:56 236] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:56 647] isr_1conn  311  send_ok_num, timer_num, send_average =   610  28  21  
+[2015/11/17 11:23:56 647] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:57 048] isr_1conn  311  send_ok_num, timer_num, send_average =   610  29  21  
+[2015/11/17 11:23:57 048] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:57 459] isr_1conn  311  send_ok_num, timer_num, send_average =   610  30  20  
+[2015/11/17 11:23:57 459] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:57 859] isr_1conn  311  send_ok_num, timer_num, send_average =   610  31  19  
+[2015/11/17 11:23:57 859] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:58 269] isr_1conn  311  send_ok_num, timer_num, send_average =   610  32  19  
+[2015/11/17 11:23:58 269] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:58 670] isr_1conn  311  send_ok_num, timer_num, send_average =   610  33  18  
+[2015/11/17 11:23:58 670] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:59 081] isr_1conn  311  send_ok_num, timer_num, send_average =   610  34  17  
+[2015/11/17 11:23:59 081] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:59 482] isr_1conn  311  send_ok_num, timer_num, send_average =   610  35  17  
+[2015/11/17 11:23:59 482] isr_1conn  314  netperf =   30  
+[2015/11/17 11:23:59 892] isr_1conn  311  send_ok_num, timer_num, send_average =   610  36  16  
+[2015/11/17 11:23:59 893] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:00 298] isr_1conn  311  send_ok_num, timer_num, send_average =   610  37  16  
+[2015/11/17 11:24:00 298] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:00 700] isr_1conn  311  send_ok_num, timer_num, send_average =   610  38  16  
+[2015/11/17 11:24:00 700] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:01 110] isr_1conn  311  send_ok_num, timer_num, send_average =   610  39  15  
+[2015/11/17 11:24:01 110] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:01 512] isr_1conn  311  send_ok_num, timer_num, send_average =   610  40  15  
+[2015/11/17 11:24:01 512] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:01 915] isr_1conn  311  send_ok_num, timer_num, send_average =   610  41  14  
+[2015/11/17 11:24:01 917] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:02 350] isr_1conn  311  send_ok_num, timer_num, send_average =   610  42  14  
+[2015/11/17 11:24:02 350] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:02 760] isr_1conn  311  send_ok_num, timer_num, send_average =   610  43  14  
+[2015/11/17 11:24:02 760] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:03 173] isr_1conn  311  send_ok_num, timer_num, send_average =   610  44  13  
+[2015/11/17 11:24:03 174] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:03 574] isr_1conn  311  send_ok_num, timer_num, send_average =   610  45  13  
+[2015/11/17 11:24:03 574] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:03 975] isr_1conn  311  send_ok_num, timer_num, send_average =   610  46  13  
+[2015/11/17 11:24:03 975] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:04 385] isr_1conn  311  send_ok_num, timer_num, send_average =   610  47  12  
+[2015/11/17 11:24:04 385] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:04 794] isr_1conn  311  send_ok_num, timer_num, send_average =   610  48  12  
+[2015/11/17 11:24:04 795] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:05 201] isr_1conn  311  send_ok_num, timer_num, send_average =   610  49  12  
+[2015/11/17 11:24:05 201] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:05 602] isr_1conn  311  send_ok_num, timer_num, send_average =   610  50  12  
+[2015/11/17 11:24:05 602] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:06 003] isr_1conn  311  send_ok_num, timer_num, send_average =   610  51  11  
+[2015/11/17 11:24:06 003] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:06 413] isr_1conn  311  send_ok_num, timer_num, send_average =   610  52  11  
+[2015/11/17 11:24:06 413] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:06 813] isr_1conn  311  send_ok_num, timer_num, send_average =   610  53  11  
+[2015/11/17 11:24:06 813] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:07 224] isr_1conn  311  send_ok_num, timer_num, send_average =   610  54  11  
+[2015/11/17 11:24:07 224] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:07 625] isr_1conn  311  send_ok_num, timer_num, send_average =   610  55  11  
+[2015/11/17 11:24:07 625] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:08 036] isr_1conn  311  send_ok_num, timer_num, send_average =   610  56  10  
+[2015/11/17 11:24:08 037] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:08 437] isr_1conn  311  send_ok_num, timer_num, send_average =   610  57  10  
+[2015/11/17 11:24:08 437] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:08 847] isr_1conn  311  send_ok_num, timer_num, send_average =   610  58  10  
+[2015/11/17 11:24:08 847] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:09 247] isr_1conn  311  send_ok_num, timer_num, send_average =   610  59  10  
+[2015/11/17 11:24:09 247] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:09 658] isr_1conn  311  send_ok_num, timer_num, send_average =   610  60  10  
+[2015/11/17 11:24:09 658] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:10 059] isr_1conn  311  send_ok_num, timer_num, send_average =   610  61  10  
+[2015/11/17 11:24:10 059] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:10 470] isr_1conn  311  send_ok_num, timer_num, send_average =   610  62  9  
+[2015/11/17 11:24:10 470] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:10 871] isr_1conn  311  send_ok_num, timer_num, send_average =   610  63  9  
+[2015/11/17 11:24:10 871] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:11 282] isr_1conn  311  send_ok_num, timer_num, send_average =   610  64  9  
+[2015/11/17 11:24:11 282] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:11 682] isr_1conn  311  send_ok_num, timer_num, send_average =   610  65  9  
+[2015/11/17 11:24:11 682] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:12 092] isr_1conn  311  send_ok_num, timer_num, send_average =   610  66  9  
+[2015/11/17 11:24:12 092] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:12 493] isr_1conn  311  send_ok_num, timer_num, send_average =   610  67  9  
+[2015/11/17 11:24:12 493] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:12 909] isr_1conn  311  send_ok_num, timer_num, send_average =   610  68  8  
+[2015/11/17 11:24:12 909] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:13 309] isr_1conn  311  send_ok_num, timer_num, send_average =   610  69  8  
+[2015/11/17 11:24:13 309] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:13 710] isr_1conn  311  send_ok_num, timer_num, send_average =   610  70  8  
+[2015/11/17 11:24:13 710] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:14 120] isr_1conn  311  send_ok_num, timer_num, send_average =   610  71  8  
+[2015/11/17 11:24:14 120] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:14 521] isr_1conn  311  send_ok_num, timer_num, send_average =   610  72  8  
+[2015/11/17 11:24:14 521] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:14 931] isr_1conn  311  send_ok_num, timer_num, send_average =   610  73  8  
+[2015/11/17 11:24:14 931] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:15 332] isr_1conn  311  send_ok_num, timer_num, send_average =   610  74  8  
+[2015/11/17 11:24:15 333] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:15 743] isr_1conn  311  send_ok_num, timer_num, send_average =   610  75  8  
+[2015/11/17 11:24:15 743] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:16 143] isr_1conn  311  send_ok_num, timer_num, send_average =   610  76  8  
+[2015/11/17 11:24:16 143] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:16 554] isr_1conn  311  send_ok_num, timer_num, send_average =   610  77  7  
+[2015/11/17 11:24:16 554] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:16 955] isr_1conn  311  send_ok_num, timer_num, send_average =   610  78  7  
+[2015/11/17 11:24:16 955] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:17 365] isr_1conn  311  send_ok_num, timer_num, send_average =   610  79  7  
+[2015/11/17 11:24:17 365] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:17 765] isr_1conn  311  send_ok_num, timer_num, send_average =   610  80  7  
+[2015/11/17 11:24:17 765] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:18 175] isr_1conn  311  send_ok_num, timer_num, send_average =   610  81  7  
+[2015/11/17 11:24:18 175] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:18 575] isr_1conn  311  send_ok_num, timer_num, send_average =   610  82  7  
+[2015/11/17 11:24:18 575] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:18 987] isr_1conn  311  send_ok_num, timer_num, send_average =   610  83  7  
+[2015/11/17 11:24:18 987] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:19 388] isr_1conn  311  send_ok_num, timer_num, send_average =   610  84  7  
+[2015/11/17 11:24:19 388] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:19 798] isr_1conn  311  send_ok_num, timer_num, send_average =   610  85  7  
+[2015/11/17 11:24:19 798] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:20 198] isr_1conn  311  send_ok_num, timer_num, send_average =   610  86  7  
+[2015/11/17 11:24:20 198] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:20 608] isr_1conn  311  send_ok_num, timer_num, send_average =   610  87  7  
+[2015/11/17 11:24:20 608] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:21 009] isr_1conn  311  send_ok_num, timer_num, send_average =   610  88  6  
+[2015/11/17 11:24:21 009] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:21 420] isr_1conn  311  send_ok_num, timer_num, send_average =   610  89  6  
+[2015/11/17 11:24:21 420] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:21 820] isr_1conn  311  send_ok_num, timer_num, send_average =   610  90  6  
+[2015/11/17 11:24:21 820] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:22 231] isr_1conn  311  send_ok_num, timer_num, send_average =   610  91  6  
+[2015/11/17 11:24:22 231] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:22 631] isr_1conn  311  send_ok_num, timer_num, send_average =   610  92  6  
+[2015/11/17 11:24:22 631] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:23 047] isr_1conn  311  send_ok_num, timer_num, send_average =   610  93  6  
+[2015/11/17 11:24:23 047] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:23 448] isr_1conn  311  send_ok_num, timer_num, send_average =   610  94  6  
+[2015/11/17 11:24:23 448] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:23 852] isr_1conn  311  send_ok_num, timer_num, send_average =   610  95  6  
+[2015/11/17 11:24:23 852] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:24 275] isr_1conn  311  send_ok_num, timer_num, send_average =   610  96  6  
+[2015/11/17 11:24:24 275] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:24 676] isr_1conn  311  send_ok_num, timer_num, send_average =   610  97  6  
+[2015/11/17 11:24:24 676] isr_1conn  314  netperf =   30  
+[2015/11/17 11:24:25 086] isr_1conn  311  send_ok_num, timer_num, send_average =   610  98  6  
+[2015/11/17 11:24:25 086] isr_1conn  314  netperf =   30  
