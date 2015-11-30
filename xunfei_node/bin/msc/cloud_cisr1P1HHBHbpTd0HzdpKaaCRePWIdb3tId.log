@@ -1,0 +1,86 @@
+============================================================
+Time  2015/11/13 18:48:09 522 
+============================================================
+[2015/11/13 18:48:09 523] isr_1conn  2218 SYS_MSG_LOAD_CLOUD  
+[2015/11/13 18:48:09 524] isr_1conn  2239 SYS_MSG_REGCB_CLOUD param0 =   msp_status_cb  param1 =  func(675d80) 
+[2015/11/13 18:48:09 524] isr_1conn  2239 SYS_MSG_REGCB_CLOUD param0 =   cloud_rslt_cb  param1 =  func(675e60) 
+[2015/11/13 18:48:09 524] isr_1conn  2239 SYS_MSG_REGCB_CLOUD param0 =   cloud_err_cb  param1 =  func(675f40) 
+[2015/11/13 18:48:09 526] isr_1conn  2239 SYS_MSG_REGCB_CLOUD param0 =   cloud_status_cb  param1 =  func(676020) 
+[2015/11/13 18:48:09 526] isr_1conn  1417 onesoc  
+[2015/11/13 18:48:09 526] isr_1conn  1418 ASR_CLOUD_MSG_SSB  
+[2015/11/13 18:48:09 527] isr_1conn  1433 isr_1conn  cloud_cisr1P1HHBHbpTd0HzdpKaaCRePWIdb3tId  268436457  1442971303  
+[2015/11/13 18:48:09 529] isr_1conn  1621 nil  
+[2015/11/13 18:48:09 529] isr_1conn  1691 speex-wb  
+[2015/11/13 18:48:09 529] isr_1conn  1769 net_once_bytes  nil  
+[2015/11/13 18:48:09 529] isr_1conn  1774 need_encode  true  
+[2015/11/13 18:48:09 529] isr_1conn  1776 once bytes  122  
+[2015/11/13 18:48:09 532] isr_1conn  1800 User set url is   nil  
+[2015/11/13 18:48:09 532] config     78   select default  
+[2015/11/13 18:48:09 532] config     93   use general cloud  
+[2015/11/13 18:48:09 532] transport  603  paramkvsport is   nil  
+[2015/11/13 18:48:09 532] transport  611  ns_enable=  0  
+[2015/11/13 18:48:09 532] transport  655  url.full=  nil  
+[2015/11/13 18:48:09 532] transport  838  net type:  standard  
+[2015/11/13 18:48:09 532] transport  839  net operator:  def  
+[2015/11/13 18:48:09 532] transport  840  use proxy:  false  
+[2015/11/13 18:48:09 532] transport  1071 ns_enable =  0  
+[2015/11/13 18:48:09 542] transport  155  [dns] [0] response 116.213.69.201  
+[2015/11/13 18:48:09 542] transport  163  116  213  69  201  
+[2015/11/13 18:48:09 542] transport  199  ip front is  116.213.69  
+[2015/11/13 18:48:09 542] transport  265  expected ip  
+[2015/11/13 18:48:09 542] network    89   iptoenv ,  ipcache  dev.voicecloud.cn  def  116.213.69.201  
+[2015/11/13 18:48:09 545] transport  1138 [soc] connect   116.213.69.201  80  
+[2015/11/13 18:48:09 546] transport  1155 mspsoc.open,prot_type=  tcp  
+[2015/11/13 18:48:09 552] transport  461  [soc] [0] connected  
+[2015/11/13 18:48:09 552] isr_1conn  389  transport connect ok  
+[2015/11/13 18:48:09 552] isr_1conn  1127 send ssb request  
+[2015/11/13 18:48:09 552] isr_1conn  821  using loginid  
+[2015/11/13 18:48:09 553] isr_1conn  852  lver:  nil  
+[2015/11/13 18:48:09 553] isr_1conn  857  cfg_ver:  nil  
+[2015/11/13 18:48:09 553] transport  1191 build http request.  
+[2015/11/13 18:48:09 555] transport  1291 POST /msp.do HTTP/1.1
+Host: dev.voicecloud.cn
+Content-Type: multipart/mixed;boundary=--
+Content-Length: 492
+User-Agent: iFLYCloud
+Cache-Control: no-cache
+Accept: */*
+
+----
+CL:222
+CT:text/plain
+
+ver=MSSP+0%2E9&sub=iat&cmd=ssb&ssm=1&auf=audio%2FL16%3Brate%3D16000&cver=5%2E0%2E16%2E1109&net%5Ftype=standard&csid=cisr1P1HHBHbpTd0HzdpKaaCRePWIdb3tId&key=0ekT/KgQg8uenXuFeURIwPejnKPqG6/^fxfX4cwA4olp5zTMirmS8ZG31^HMAOKJae
+----
+CL:176
+CT:text/params
+CE:gzip,encrypt/0.2
+
+Ô>¥¾,Åï_jçTta+‡	¶„{åï u1JÕ¼OÔ`b}÷ ]R©,ÇSë’Y!É‰^ƒl*õ©Ñ“²Ş*gùè£ª˜5‚•zåÓg)·P$'ºş?gßòJÂ)ı…Í?‹ó&ñ5ÓvÊp´c¸læsŒÛ^O|ì¿.MÆnø"Ñås!cªPJèÑøhoÀí•_¯vÍOŠïîLõ¯”i:©  
+[2015/11/13 18:48:09 560] transport  483  [soc] [0] send ok  667  
+[2015/11/13 18:48:09 581] transport  495  [soc] [0] readable  
+[2015/11/13 18:48:09 582] transport  1563 HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 174
+X-Req-Date: 2015/11/13 18:42:17 68
+Cache-Control: no-cache
+CL: 174
+X-Res-Date: 2015/11/13 18:42:17 86
+
+ver=MSSP+0%2E9&ret=0&cver=5%2E0%2E16%2E1109&uid=d3279533481&key=0fEVoKOXaK^T8T2T^tbNsSb8L1Xl/Y2FHef2gDGQJr2AA^HBywnTxKrUifQcoKI2LnUEcj9wJ7j8FrJsWfAnwjExmhs5T9hkChaybFnwJ8IxM=  
+[2015/11/13 18:48:09 582] transport  1310 a_complete_httpmessage  200  
+[2015/11/13 18:48:09 582] transport  1419 is_update  true  
+[2015/11/13 18:48:09 582] isr_1conn  421  [trans] [isr_1conncisr1P1HHBHbpTd0HzdpKaaCRePWIdb3tId] readable  
+[2015/11/13 18:48:09 582] isr_1conn  457  response  
+[2015/11/13 18:48:09 582] isr_1conn  519  resp_syncid =  0  
+[2015/11/13 18:48:09 583] ntp        10   ntp_process enter  
+[2015/11/13 18:48:09 583] ntp        53   ntp delay_rtt=  11.999999999944  , offset =   -641.188  
+[2015/11/13 18:48:09 583] isr_1conn  568  sid =   iat7458b17f@ch006909a10d0f477100  
+[2015/11/13 18:48:09 585] isr_1conn  574  not QUL_SUPPORT  
+[2015/11/13 18:48:09 585] isr_1conn  581  time cost by session begin command:  32  .  
+[2015/11/13 18:48:09 585] isr_1conn  595  0  2  2  0  
+[2015/11/13 18:49:14 578] transport  524  MSC:[soc] [0] remote closed!  
+[2015/11/13 18:49:14 578] transport  940  switch 1028  
+[2015/11/13 18:49:14 578] transport  49   throw_exception  10212  0  MSC:[soc] [0] remote closed!  
+[2015/11/13 18:49:14 578] isr_1conn  739  transport exception  10212  slave  
+[2015/11/13 18:49:14 578] isr_1conn  769  [trans] [isr_1conncisr1P1HHBHbpTd0HzdpKaaCRePWIdb3tId] exception 10212  

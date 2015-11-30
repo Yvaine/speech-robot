@@ -1,0 +1,309 @@
+/*
+* 语音听写(iFly Auto Transform)技术能够实时地将语音转换成对应的文字。
+*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <windows.h>
+#include <conio.h>
+#include <errno.h>
+
+#include "qisr.h"
+#include "msp_cmn.h"
+#include "msp_errors.h"
+
+#ifdef _WIN64
+#pragma comment(lib,"../libs/msc_x64.lib") //x64
+#else
+#pragma comment(lib,"../../libs/msc.lib") //x86
+#endif
+
+#pragma comment(lib, "ws2_32.lib")
+#define	BUFFER_SIZE	4096
+#define FRAME_LEN	640 
+#define HINTS_SIZE  100
+const int port = 9001;
+#define SPACE_SIZE 100
+#define CMD_NUM 10
+
+char *speech_cmd[CMD_NUM] = {"左转", "右转", "前进", "后退", "停止", "头抬起", "头低下", "头左转", "头右转","跟我走"};
+char cmd_code[CMD_NUM] = {'a', 'd', 'w', 's', 'q',' u', 'j', 'h', 'k', 'f'};
+
+/* 上传用户词表 */
+int upload_userwords()
+{
+	char*			userwords	=	NULL;
+	unsigned int	len			=	0;
+	unsigned int	read_len	=	0;
+	FILE*			fp			=	NULL;
+	int				ret			=	-1;
+
+	fp = fopen("userwords1.txt", "rb");
+	if (NULL == fp)										
+	{
+		printf("\nopen [userwords.txt] failed! \n");
+		goto upload_exit;
+	}
+
+	fseek(fp, 0, SEEK_END);
+	len = ftell(fp); //获取音频文件大小
+	fseek(fp, 0, SEEK_SET);  					
+	
+	userwords = (char*)malloc(len + 1);
+	if (NULL == userwords)
+	{
+		printf("\nout of memory! \n");
+		goto upload_exit;
+	}
+
+	read_len = fread((void*)userwords, 1, len, fp); //读取用户词表内容
+	if (read_len != len)
+	{
+		printf("\nread [userwords.txt] failed!\n");
+		goto upload_exit;
+	}
+	userwords[len] = '\0';
+	
+	MSPUploadData("userwords", userwords, len, "sub = uup, dtt = userword", &ret); //上传用户词表
+	if (MSP_SUCCESS != ret)
+	{
+		printf("\nMSPUploadData failed ! errorCode: %d \n", ret);
+		goto upload_exit;
+	}
+	
+upload_exit:
+	if (NULL != fp)
+	{
+		fclose(fp);
+		fp = NULL;
+	}	
+	if (NULL != userwords)
+	{
+		free(userwords);
+		userwords = NULL;
+	}
+	
+	return ret;
+}
+
+void run_iat( const char* session_begin_params)
+{
+	const char*		session_id					=	NULL;
+	
+	char			hints[HINTS_SIZE]			=	{NULL}; //hints为结束本次会话的原因描述，由用户自定义
+	unsigned int	total_len					=	0; 
+	int				aud_stat					=	MSP_AUDIO_SAMPLE_CONTINUE ;		//音频状态
+	int				ep_stat						=	MSP_EP_LOOKING_FOR_SPEECH;		//端点检测
+	int				rec_stat					=	MSP_REC_STATUS_SUCCESS ;			//识别状态
+	int				errcode						=	MSP_SUCCESS ;
+	
+	long			read_size					=	0;
+
+
+	WSADATA wsaData;
+	WORD sockVersion = MAKEWORD(2,2);
+	if(WSAStartup(sockVersion, &wsaData) != 0)
+		return;
+
+	SOCKET serSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	if(serSocket == INVALID_SOCKET)
+	{
+		printf("socket failed \n");
+		return ;
+	}
+
+	sockaddr_in serAddr;
+	serAddr.sin_family = AF_INET;
+	serAddr.sin_port = htons(port);
+	serAddr.sin_addr.S_un.S_addr = INADDR_ANY;
+	if(bind(serSocket, (LPSOCKADDR)&serAddr, sizeof(serAddr)) == SOCKET_ERROR)
+	{
+		printf("bind error!\n");
+	    return ;
+	}
+	printf("服务端开启\n");
+	//开始监听
+    if(listen(serSocket, 5) == SOCKET_ERROR)
+    {
+        printf("listen error !");
+        return ;
+    }
+	
+    SOCKET sClient;
+	sockaddr_in remoteAddr;
+	int nAddrLen = sizeof(remoteAddr);
+
+	sClient = accept(serSocket, (SOCKADDR *)&remoteAddr, &nAddrLen);
+    if(sClient == INVALID_SOCKET)
+    {
+        printf("accept error !");
+    }
+    printf("接受到一个连接：%s \r\n", inet_ntoa(remoteAddr.sin_addr));
+
+	unsigned int len = 10 * FRAME_LEN; // 每次写入200ms音频(16k，16bit)：1帧音频20ms，10帧=200ms。16k采样率的16位音频，一帧的大小为640Byte
+	char *space_buffer = (char*)malloc(len);
+
+	char *p_data = space_buffer;
+	char *p_data2 = space_buffer;
+	
+	int rec_number = 0;
+	long pcm_count = 0;
+	char rec_result[BUFFER_SIZE] = {NULL};	
+	
+	int sendlen = 0;
+	while(1)
+	{
+		rec_number = 0;
+		pcm_count = 0;
+		//memset(rec_result, 0, BUFFER_SIZE);	
+		printf("\n开始语音听写 ...\n");
+		session_id = QISRSessionBegin(NULL, session_begin_params, &errcode); //听写不需要语法，第一个参数为NULL
+		if (MSP_SUCCESS != errcode)
+		{
+			printf("\nQISRSessionBegin failed! error code:%d\n", errcode);
+			goto iat_exit;
+		}
+		while (1) 
+		{
+		
+			int ret = 0;
+			if (len <= 0)
+				break;
+
+			aud_stat = MSP_AUDIO_SAMPLE_CONTINUE;
+			if (0 == pcm_count)
+				aud_stat = MSP_AUDIO_SAMPLE_FIRST;
+
+			printf(">");
+			int recvlen = 0;
+			int nleft = len;
+
+			while (nleft > 0)
+			{
+				recvlen = recv(sClient, p_data, nleft, 0);
+				p_data += recvlen;
+				nleft -= recvlen;
+			}
+
+			p_data = space_buffer;
+			//printf("recv size %d \n", total_recv);
+			ret = QISRAudioWrite(session_id, (const void *)p_data2, len, aud_stat, &ep_stat, &rec_stat);
+			if (MSP_SUCCESS != ret)
+			{
+				printf("\nQISRAudioWrite failed! error code:%d\n", ret);
+				goto iat_exit;
+			}
+			if (MSP_REC_STATUS_SUCCESS == rec_stat) //已经有部分听写结果
+			{
+				printf("识别出结果了 %d\n", rec_number);
+				
+				const char *rslt = QISRGetResult(session_id, &rec_stat, 0, &errcode);
+				if (MSP_SUCCESS != errcode)
+				{
+					printf("\nQISRGetResult failed! error code: %d\n", errcode);
+					goto iat_exit;
+				}
+				if (NULL != rslt)
+				{
+					unsigned int rslt_len = strlen(rslt);
+					total_len += rslt_len;
+					if (total_len >= BUFFER_SIZE)
+					{
+						printf("\nno enough buffer for rec_result !\n");
+						goto iat_exit;
+					}
+					//strncat(rec_result, rslt, rslt_len);
+					printf("\n语音听写结束\n");
+					printf("=============================================================\n");
+					//printf("%s\n",rec_result);
+					printf("%s\n",rslt);
+					printf("=============================================================\n");
+					//Sleep(200); //模拟人说话时间间隙。200ms对应10帧的音频
+					for (int i = 0; i < CMD_NUM; i++)
+					{
+						if(strcmp(speech_cmd[i], rslt) == 0)
+						{
+							printf(" speech_cmd is %s \n cmd_code is %c", speech_cmd[i], cmd_code[i]);
+							if( (sendlen = send(sClient, &cmd_code[i], sizeof(char), 0)) < 0)
+								printf("send comand failed! \n");
+							else
+							{
+								//printf("send cmd %c \n", cmd_code[i]);
+							}
+							break;
+						}
+					}
+					break;
+				}
+			}
+			else
+			{
+				//printf("还没有听写结果 %d\n", rec_number);
+			}
+			pcm_count += (long)len;
+		
+			if (MSP_EP_AFTER_SPEECH == ep_stat)
+			{
+				printf("loop = %d, 检测到后端点\n", rec_number);
+				break;
+			}
+			rec_number++;
+			//Sleep(200); //模拟人说话时间间隙。200ms对应10帧的音频
+		}
+		QISRSessionEnd(session_id, hints);
+	}
+
+iat_exit:
+
+	QISRSessionEnd(session_id, hints);
+}
+
+int main(int argc, char* argv[])
+{
+	int			ret						=	MSP_SUCCESS;
+	int			upload_on				=	1; //是否上传用户词表
+	const char* login_params			=	"appid = 5638844a, work_dir = ."; // 登录参数，appid与msc库绑定,请勿随意改动
+
+	/*
+	* sub:				请求业务类型
+	* domain:			领域
+	* language:			语言
+	* accent:			方言
+	* sample_rate:		音频采样率
+	* result_type:		识别结果格式
+	* result_encoding:	结果编码格式
+	*
+	* 详细参数说明请参阅《iFlytek MSC Reference Manual》
+	*/
+	const char* session_begin_params	=	"sub = iat, domain = iat, language = zh_ch, accent = mandarin, sample_rate = 16000, result_type = plain, result_encoding = gb2312, audio/L16; rate =1600";
+
+	/* 用户登录 */
+	ret = MSPLogin(NULL, NULL, login_params); //第一个参数是用户名，第二个参数是密码，均传NULL即可，第三个参数是登录参数	
+	if (MSP_SUCCESS != ret)
+	{
+		printf("MSPLogin failed , Error code %d.\n",ret);
+		goto exit; //登录失败，退出登录
+	}
+
+	printf("\n########################################################################\n");
+	printf("## 语音听写(iFly Auto Transform)技术能够实时地将语音转换成对应的文字。##\n");
+	printf("########################################################################\n\n");
+	printf("演示示例选择:是否上传用户词表？\n0:不使用\n1:使用\n");
+
+	scanf("%d", &upload_on);
+	if (upload_on)
+	{
+		printf("上传用户词表 ...\n");
+		ret = upload_userwords();
+		if (MSP_SUCCESS != ret)
+			goto exit;	
+		printf("上传用户词表成功\n");
+	}
+	run_iat(session_begin_params); //iflytek02音频内容为“中美数控”；如果上传了用户词表，识别结果为：“中美速控”。
+exit:
+	printf("按任意键退出 ...\n");
+	_getch();
+	MSPLogout(); //退出登录
+
+	return 0;
+}

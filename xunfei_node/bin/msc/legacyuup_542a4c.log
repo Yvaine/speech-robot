@@ -1,0 +1,68 @@
+============================================================
+Time  2015/11/17 11:33:28 977 
+============================================================
+[2015/11/17 11:33:28 980] legacyuup  305  SYS_MSG_LOAD  
+[2015/11/17 11:33:28 983] legacyuup  218  UUP_MSG_START  
+[2015/11/17 11:33:28 983] legacyuup  220  legacyuup  legacyuup_542a4c  268436457  1442971331  
+[2015/11/17 11:33:28 983] legacyuup  263  User set url is   nil  
+[2015/11/17 11:33:28 983] config     78   select default  
+[2015/11/17 11:33:28 983] config     93   use general cloud  
+[2015/11/17 11:33:28 984] transport  603  paramkvsport is   nil  
+[2015/11/17 11:33:28 984] transport  611  ns_enable=  0  
+[2015/11/17 11:33:28 984] transport  655  url.full=  nil  
+[2015/11/17 11:33:28 984] transport  831  switch 80  
+[2015/11/17 11:33:28 984] transport  838  net type:  standard  
+[2015/11/17 11:33:28 984] transport  839  net operator:  def  
+[2015/11/17 11:33:28 984] transport  840  use proxy:  false  
+[2015/11/17 11:33:28 984] legacyuup  280  not login!  
+[2015/11/17 11:33:29 170] legacyuup  294  UUP_MSG_LGI_RESULT  
+[2015/11/17 11:33:29 170] legacyuup  174  [session] send uup request  
+[2015/11/17 11:33:29 170] transport  1071 ns_enable =  0  
+[2015/11/17 11:33:29 170] legacyuup  131  lver:  nil  
+[2015/11/17 11:33:29 170] legacyuup  136  cfg_ver:  nil  
+[2015/11/17 11:33:29 187] transport  155  [dns] [0] response 116.213.69.200  
+[2015/11/17 11:33:29 187] transport  163  116  213  69  200  
+[2015/11/17 11:33:29 187] transport  199  ip front is  116.213.69  
+[2015/11/17 11:33:29 187] transport  265  expected ip  
+[2015/11/17 11:33:29 187] network    89   iptoenv ,  ipcache  dev.voicecloud.cn  def  116.213.69.200  
+[2015/11/17 11:33:29 187] transport  1138 [soc] connect   116.213.69.200  80  
+[2015/11/17 11:33:29 188] transport  1155 mspsoc.open,prot_type=  tcp  
+[2015/11/17 11:33:29 197] transport  461  [soc] [0] connected  
+[2015/11/17 11:33:29 197] transport  1191 build http request.  
+[2015/11/17 11:33:29 197] transport  1291 POST /msp.do HTTP/1.1
+Host: dev.voicecloud.cn
+Content-Type: multipart/mixed;boundary=--
+Content-Length: 873
+User-Agent: iFLYCloud
+Cache-Control: no-cache
+Accept: */*
+
+----
+CL:168
+CT:text/plain
+
+ver=MSSP+0%2E9&sub=uup&cmd=uup&cver=5%2E0%2E16%2E1109&key=0fXikH/dkGh3YOxGcw90nIn42jL6CdPRImUmIWn3BHjsc^HBywnTxKrUifQcoKI2LnUEcj9wJ7j8FrJsWfAnwjExmhs5T9hkChaybFnwJ8IxM=
+----
+CL:176
+CT:binary/userdata+userword
+CE:gzip,encrypt/0.2
+
+©ËÆ´\«Æ42NI*IN´K.5÷Ó 2fUÓÂH¡√wû:RPLçLYâà’RÏ’ΩÔŸ$Ëö©4"á¯sM°éLÅAÇ¬N=MYπ’áùqï›B{[Ñä…jˆK…÷ñ∑¢¡+	cé≤‹íç–]+üC⁄º÷l  
+[2015/11/17 11:33:29 203] transport  483  [soc] [0] send ok  1048  
+[2015/11/17 11:33:29 417] transport  495  [soc] [0] readable  
+[2015/11/17 11:33:29 417] transport  1563 HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 158
+X-Req-Date: 2015/11/17 11:33:30 88
+Cache-Control: no-cache
+CL: 158
+X-Res-Date: 2015/11/17 11:33:30 92
+
+ver=MSSP+0%2E9&ret=0&cver=5%2E0%2E16%2E1109&key=0fHN8A/NOYrfUfpYf2XV8WKdUy2Eh5EYFR5V4fAoneBY0^HBywnTxKrUifQcoKI2LnUEcj9wJ7j8FrJsWfAnwjExmhs5T9hkChaybFnwJ8IxM=  
+[2015/11/17 11:33:29 417] transport  1310 a_complete_httpmessage  200  
+[2015/11/17 11:33:29 417] transport  1419 is_update  true  
+[2015/11/17 11:33:29 417] legacyuup  50   [trans] [id = uuplegacyuup_542a4c] readable  
+[2015/11/17 11:33:29 418] network    84   ipfromenv ,  ipcache  dev.voicecloud.cn  def  116.213.69.200  
+[2015/11/17 11:33:29 420] transport  914  cached ip is confirmed  
+[2015/11/17 11:33:29 420] transport  1170 [soc] disconnect   
+[2015/11/17 11:33:29 420] legacyuup  60   uup ok!  
